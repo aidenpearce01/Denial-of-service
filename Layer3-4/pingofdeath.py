@@ -8,6 +8,7 @@ if len(sys.argv) != 2:
 	print "Usage: pingofdeath.py <target>"
 	sys.exit(1) 
 victim = sys.argv[1]
+sys.tracebacklimit=0
 
 class pingofdeath:
 	try:
