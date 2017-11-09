@@ -2,7 +2,7 @@
 #author Aiden
 
 from scapy.all import *
-import socket, sys,re 
+import socket, sys,re ,threading
 
 if len(sys.argv) != 2:
 	print "Usage: teardrop.py <target>"
